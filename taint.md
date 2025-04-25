@@ -1,6 +1,6 @@
 # Workout with Taint
 
-If any worker/node is tainted, pods aren't allowed to be applied on them
+If any worker/node are tainted, pods aren't allowed to be applied on them
 
 ```
 ➜  Taints-And-Tolerations git:(main) ✗ kubectl get nodes
