@@ -35,9 +35,6 @@ namespace/tat-ns created
 ➜  Taints-And-Tolerations git:(main) ✗ kubectl apply -f pod.yml 
 pod/nginx-pod created
 
-➜  Taints-And-Tolerations git:(main) ✗ kubectl get pods
-No resources found in default namespace.
-
 ➜  Taints-And-Tolerations git:(main) ✗ kubectl get pods -n tat-ns
 NAME        READY   STATUS    RESTARTS   AGE
 nginx-pod   0/1     Pending   0          13s
