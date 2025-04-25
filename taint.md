@@ -50,6 +50,48 @@ nginx-pod   0/1     Pending   0          16s
 ➜  Taints-And-Tolerations git:(main) ✗ echo "Since all nodes are tainted, no where to run pod, remain Pending"
 Since all nodes are tainted, no where to run pod, remain Pending
 
-➜  Taints-And-Tolerations git:(main) ✗ 
+➜  Taints-And-Tolerations git:(main) kubectl get pods -n tat-ns
+NAME        READY   STATUS    RESTARTS   AGE
+nginx-pod   0/1     Pending   0          5m49s
+
+➜  Taints-And-Tolerations git:(main) kubectl describe pod nginx-pod -n tat-ns
+Name:             nginx-pod
+Namespace:        tat-ns
+Priority:         0
+Service Account:  default
+Node:             <none>
+Labels:           <none>
+Annotations:      <none>
+Status:           Pending
+IP:               
+IPs:              <none>
+Containers:
+  nginx:
+    Image:        nginx:latest
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-xpw9b (ro)
+Conditions:
+  Type           Status
+  PodScheduled   False 
+Volumes:
+  kube-api-access-xpw9b:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason            Age   From               Message
+  ----     ------            ----  ----               -------
+  `Warning  FailedScheduling  6m7s  default-scheduler  0/4 nodes are available: 1 node(s) had untolerated taint {node-role.kubernetes.io/control-plane: }, 3 node(s) had untolerated taint {prod: true}. preemption: 0/4 nodes are available: 4 Preemption is not helpful for scheduling.
+  Warning  FailedScheduling  65s   default-scheduler  0/4 nodes are available: 1 node(s) had untolerated taint {node-role.kubernetes.io/control-plane: }, 3 node(s) had untolerated taint {prod: true}. preemption: 0/4 nodes are available: 4 Preemption is not helpful for scheduling.`
+
 
 ```
