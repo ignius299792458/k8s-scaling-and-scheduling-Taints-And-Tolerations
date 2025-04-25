@@ -5,8 +5,8 @@ Tolerations is applied within the pod configuration, configuring the tainted nod
 Example:
 
 ```
-➜  Taints-And-Tolerations git:(main) vim pod.yml 
-➜  Taints-And-Tolerations git:(main) kubectl apply -f pod.yml 
+➜  Taints-And-Tolerations git:(main) vim tolerations-test-pod.yml
+➜  Taints-And-Tolerations git:(main) kubectl apply -f tolerations-test-pod.yml
 pod/nginx-pod created
 ➜  Taints-And-Tolerations git:(main) kubectl get pods -n tat-ns
 NAME        READY   STATUS    RESTARTS   AGE
