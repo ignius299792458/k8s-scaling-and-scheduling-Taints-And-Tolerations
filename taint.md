@@ -26,13 +26,13 @@ node/ignius-k8s-cluster-worker2 tainted
 ➜  Taints-And-Tolerations git:(main) ✗ kubectl taint node ignius-k8s-cluster-worker3 prod=true:NoSchedule
 node/ignius-k8s-cluster-worker3 tainted
 
-➜  Taints-And-Tolerations git:(main) ✗ kubectl apply -f pod.yml 
-Error from server (NotFound): error when creating "pod.yml": namespaces "tat-ns" not found
+➜  Taints-And-Tolerations git:(main) ✗ kubectl apply -f taint-test-pod.yml
+Error from server (NotFound): error when creating "taint-test-pod.yml": namespaces "tat-ns" not found
 
 ➜  Taints-And-Tolerations git:(main) ✗ kubectl apply -f namespace.yml 
 namespace/tat-ns created
 
-➜  Taints-And-Tolerations git:(main) ✗ kubectl apply -f pod.yml 
+➜  Taints-And-Tolerations git:(main) ✗ kubectl apply -f taint-test-pod.yml
 pod/nginx-pod created
 
 ➜  Taints-And-Tolerations git:(main) ✗ kubectl get pods -n tat-ns
