@@ -90,8 +90,19 @@ Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists fo
 Events:
   Type     Reason            Age   From               Message
   ----     ------            ----  ----               -------
-  `Warning  FailedScheduling  6m7s  default-scheduler  0/4 nodes are available: 1 node(s) had untolerated taint {node-role.kubernetes.io/control-plane: }, 3 node(s) had untolerated taint {prod: true}. preemption: 0/4 nodes are available: 4 Preemption is not helpful for scheduling.
-  Warning  FailedScheduling  65s   default-scheduler  0/4 nodes are available: 1 node(s) had untolerated taint {node-role.kubernetes.io/control-plane: }, 3 node(s) had untolerated taint {prod: true}. preemption: 0/4 nodes are available: 4 Preemption is not helpful for scheduling.`
+Warning  FailedScheduling  6m7s  default-scheduler  0/4 nodes are available: 1 node(s) had untolerated taint {node-role.kubernetes.io/control-plane: }, 3 node(s) had untolerated taint {prod: true}. preemption: 0/4 nodes are available: 4 Preemption is not helpful for scheduling.
+  Warning  FailedScheduling  65s   default-scheduler  0/4 nodes are available: 1 node(s) had untolerated taint {node-role.kubernetes.io/control-plane: }, 3 node(s) had untolerated taint {prod: true}. preemption: 0/4 nodes are available: 4 Preemption is not helpful for scheduling.
 
+➜  Taints-And-Tolerations git:(main) kubectl taint node ignius-k8s-cluster-worker3 prod=true:NoSchedule-
+node/ignius-k8s-cluster-worker3 untainted
+
+➜  Taints-And-Tolerations git:(main) kubectl get pods -n tat-ns                                         
+NAME        READY   STATUS    RESTARTS   AGE
+nginx-pod   1/1     Running   0          8m6s
+
+➜  Taints-And-Tolerations git:(main) echo "nginx-pod is running due removal of one tainted pod"
+nginx-pod is running due removal of one tainted pod
+
+➜  Taints-And-Tolerations git:(main) 
 
 ```
